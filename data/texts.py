@@ -113,7 +113,7 @@ bot_info_text = (
     
     "<b>Адрес</b>: @fitsStatsBot\n"
     "<b>Версия бота</b>: {bot_version}\n"
-    "<b>Github</b>: <a href={github}>Fit Stats Bot<a>\n\n"
+    "<b>Github</b>: <a href='{github}'>Fit Stats Bot</a>\n\n"
 
     "<b>Телеграм автора</b>: {telegram}\n"
     "<b>ВК автора</b>: {vk}\n\n"

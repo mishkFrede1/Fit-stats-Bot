@@ -82,7 +82,7 @@ async def about(message: Message):
 
         telegram = config["creator"]["telegram_link"]
         vk = config["creator"]["vk_link"]
-        await message.answer(texts.bot_info_text.format(bot_version=bot_version, github=github, telegram=telegram, vk=vk), parse_mode="html")
+        await message.answer(texts.bot_info_text.format(bot_version=bot_version, github=github, telegram=telegram, vk=vk), parse_mode="html", disable_web_page_preview=True)
 
 
 async def friends_text_send(message: Message):
