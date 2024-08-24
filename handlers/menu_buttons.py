@@ -66,11 +66,11 @@ async def about_command(message: Message):
         config = json.load(config_file)
 
         bot_version = config["bot_version"]
-        last_update = config["last_update"]
+        github = config["github"]
 
         telegram = config["creator"]["telegram_link"]
         vk = config["creator"]["vk_link"]
-        await message.answer(texts.bot_info_text.format(bot_version=bot_version, last_update=last_update, telegram=telegram, vk=vk), parse_mode="html")
+        await message.answer(texts.bot_info_text.format(bot_version=bot_version, github=github, telegram=telegram, vk=vk), parse_mode="html")
 
 @router.message(F.text == "О боте ℹ️")
 async def about(message: Message):

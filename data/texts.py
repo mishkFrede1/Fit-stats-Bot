@@ -113,12 +113,10 @@ bot_info_text = (
     
     "<b>Адрес</b>: @fitsStatsBot\n"
     "<b>Версия бота</b>: {bot_version}\n"
-    "<b>Последнее обновление</b>: {last_update}\n\n"
+    "<b>Github</b>: <a href={github}>Fit Stats Bot<a>\n\n"
 
     "<b>Телеграм автора</b>: {telegram}\n"
     "<b>ВК автора</b>: {vk}\n\n"
-
-    "<b>По всем вопросам и ошибкам:</b>"
 )
 
 updated_data_text = "✔️ <b>Данные обновлены</b>."
