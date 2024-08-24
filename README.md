@@ -1,3 +1,6 @@
+![Grafana Logo (Light)](bot_icon.png#gh-light-mode-only)
+![Grafana Logo (Dark)](bot_icon.png#gh-dark-mode-only)
+
 The python telegram bot on the aiogram 3.x
 
 This bot will help you in the field of fitness.
@@ -10,10 +13,10 @@ This bot will help you in the field of fitness.
 - **Friends:** Invite your own friends and train with them. You can view your friends' stats, workouts, and recordings. Customize your own privacy settings as you wish.
 
 ## Get started
-- [Bot](https://t.me/fitsStatsBot)
+- [Bot link](https://t.me/fitsStatsBot)
 
 You can easily register in this Bot right now by answering a few simple questions.
 
 ## Contacts
-- **Telegram:**[whitePower1](https://t.me/whitePower1)
-- **VK:**[vadimDvache](https://vk.com/vadimdvache)
+- **Telegram:** [whitePower1](https://t.me/whitePower1)
+- **VK:** [vadimDvache](https://vk.com/vadimdvache)
