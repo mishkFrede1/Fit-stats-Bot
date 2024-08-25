@@ -104,7 +104,7 @@ async def records_info(callback_query: CallbackQuery, bot: Bot):
         text += f"\n<b>Измерения</b>:\n{measures}"
 
     if note != None:
-        text += f"\n<b>Комменнтарий</b>: {note} \n"
+        text += f"\n<b>Комментарий</b>: {note} \n"
 
     inline_keyboard = []
     if exercises != None:
@@ -354,7 +354,7 @@ async def filtered_records_info(callback_query: CallbackQuery, bot: Bot):
         text += f"\n<b>Измерения</b>:\n{measures}"
 
     if note != None:
-        text += f"\n<b>Комменнтарий</b>: {note} \n"
+        text += f"\n<b>Комментарий</b>: {note} \n"
 
     inline_keyboard = []
     if exercises != None:
