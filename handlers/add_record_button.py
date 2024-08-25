@@ -14,7 +14,7 @@ manager = Manager()
 async def cancel(message: Message):
     if manager.user_exists(message.from_user.id):
         username = message.from_user.username
-        if username == "": 
+        if username == "" or username == None: 
             username = None
 
         now = datetime.now()
