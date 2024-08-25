@@ -48,7 +48,7 @@ async def delete_confirmation_yes(callback_query: CallbackQuery, bot: Bot):
     if callback_query.data == "YesDeleteAcc" and manager.user_exists(callback_query.from_user.id):
         manager.delete_user(callback_query.from_user.id)
         await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
-        await bot.send_message(callback_query.from_user.id, "⚙️✔️ <b>Аккаунт удален</b>.", parse_mode="html", reply_markup=ReplyKeyboardRemove())
+        await bot.send_message(callback_query.from_user.id, "✔️ <b>Аккаунт удален</b>.", parse_mode="html", reply_markup=ReplyKeyboardRemove())
 
     else:
         await bot.send_message(callback_query.from_user.id, texts.delete_error_text, parse_mode="html", reply_markup=ReplyKeyboardRemove())
