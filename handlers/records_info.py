@@ -82,10 +82,10 @@ async def records_info(callback_query: CallbackQuery, bot: Bot):
             text += f"<b>Времени потрачено</b>: {time_spent} {ending} \n"
 
     if gained_cal != None:
-        text += f"<b>Набранно</b>: {gained_cal} килокалорий \n"
+        text += f"<b>Набранно</b>: {gained_cal} ккал. \n"
 
     if burned_cal != None:
-        text += f"<b>Соженно</b>: {burned_cal} килокалорий \n"
+        text += f"<b>Сожженно</b>: {burned_cal} ккал. \n"
 
     if state_of_health != None:
         text += f"<b>Самочувствие</b>: {state_of_health} \n"
@@ -332,10 +332,10 @@ async def filtered_records_info(callback_query: CallbackQuery, bot: Bot):
             text += f"<b>Времени потрачено</b>: {time_spent} {ending} \n"
 
     if gained_cal != None:
-        text += f"<b>Набранно</b>: {gained_cal} килокалорий \n"
+        text += f"<b>Набранно</b>: {gained_cal} ккал. \n"
 
     if burned_cal != None:
-        text += f"<b>Соженно</b>: {burned_cal} килокалорий \n"
+        text += f"<b>Сожженно</b>: {burned_cal} ккал. \n"
 
     if state_of_health != None:
         text += f"<b>Самочувствие</b>: {state_of_health} \n"

@@ -26,7 +26,7 @@ async def get_note_calories_type(message: Message):
 @router.callback_query(F.data.startswith("cal_burned"))
 async def get_note_calories_burned(callback_query: CallbackQuery, state: FSMContext, bot: Bot):
     await state.set_state(calories_burned.calories)
-    await bot.send_message(callback_query.from_user.id, f"🍽 <b>Введите количество соженных килокалорий</b>:", parse_mode="html")
+    await bot.send_message(callback_query.from_user.id, f"🍽 <b>Введите количество соженных ккал.</b>:", parse_mode="html")
     
 @router.message(calories_burned.calories)
 async def save_note_calories_burned(message: Message, state: FSMContext, bot: Bot):
@@ -46,7 +46,7 @@ async def save_note_calories_burned(message: Message, state: FSMContext, bot: Bo
 @router.callback_query(F.data.startswith("cal_gained"))
 async def get_note_calories_gained(callback_query: CallbackQuery, state: FSMContext, bot: Bot):
     await state.set_state(calories_gained.calories)
-    await bot.send_message(callback_query.from_user.id, f"🍽 <b>Введите количество набранных килокалорий</b>:", parse_mode="html")
+    await bot.send_message(callback_query.from_user.id, f"🍽 <b>Введите количество набранных ккал.</b>:", parse_mode="html")
     
 @router.message(calories_gained.calories)
 async def save_note_calories_gained(message: Message, state: FSMContext, bot: Bot):
