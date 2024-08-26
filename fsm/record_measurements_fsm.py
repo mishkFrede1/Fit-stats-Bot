@@ -18,12 +18,12 @@ class measurements(StatesGroup):
 async def get_measure_type(message: Message, state: FSMContext):
     if manager.user_exists(message.from_user.id):
         await state.set_state(measurements.type)
-        await message.answer("⚙️ <b>Выберите тип измерения</b>:", parse_mode="html", reply_markup=keyboards.measurement_stats_types)
+        await message.answer("⚙️ <b>Выберите тип измерения</b>:", parse_mode="html", reply_markup=keyboards.measurement_types)
     else:
         await message.answer(texts.unregistered_access_text, parse_mode="html")
         await state.clear()
 
-@router.callback_query(F.data.startswith("measure_stat_")) # | F.data.startswith("measure_type_")
+@router.callback_query(F.data.startswith("measure_type_")) # | F.data.startswith("measure_type_")
 async def get_measurement(callback_query: CallbackQuery, bot: Bot, state: FSMContext):
     measure_type = callback_query.data.split("_")[2]
     await state.update_data(type = measure_type)

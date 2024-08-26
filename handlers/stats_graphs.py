@@ -36,11 +36,11 @@ async def calories_types_stats(callback_query: CallbackQuery, bot: Bot):
 @router.message(F.text == "Измерения 📏")
 async def measurements_stats(message: Message):
     if manager.user_exists(message.from_user.id):
-        await message.answer("⚙️ <b>Выберите тип измерения</b>:", parse_mode="html", reply_markup=keyboards.measurement_types)
+        await message.answer("⚙️ <b>Выберите тип измерения</b>:", parse_mode="html", reply_markup=keyboards.measurement_stats_types)
     else:
         await message.answer(texts.unregistered_access_text, parse_mode="html", reply_markup=ReplyKeyboardRemove())
 
-@router.callback_query(F.data.startswith("measure_type_"))
+@router.callback_query(F.data.startswith("measure_stat_"))
 async def measurements_types_stats(callback_query: CallbackQuery, bot: Bot):
     type = callback_query.data.split("_")[2]
     await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
