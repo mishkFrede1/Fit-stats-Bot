@@ -1,5 +1,5 @@
-![Grafana Logo (Light)](bot_logo_light.png#gh-light-mode-only)
-![Grafana Logo (Dark)](bot_logo_light.png#gh-dark-mode-only)
+![Logo (Light)](bot_logo_light.png#gh-light-mode-only)
+![Logo (Dark)](bot_logo_light.png#gh-dark-mode-only)
 
 The python telegram bot on the aiogram 3.x
 
