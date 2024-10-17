@@ -58,7 +58,7 @@ async def send_friend(message: Message, state: FSMContext):
                 f_list.append(message.from_user.id)
                 manager.upload_friend_list(id, list(set(f_list)))
 
-            await message.answer("✔️ <b>Друг успешно добален</b>.", parse_mode="html", reply_markup=keyboards.friends)
+            await message.answer("✔️ <b>Друг успешно добавлен</b>.", parse_mode="html", reply_markup=keyboards.friends)
 
     elif type == "nick":
         username = message.text
@@ -85,6 +85,8 @@ async def send_friend(message: Message, state: FSMContext):
                     f_list.append(message.from_user.id)
                     manager.upload_friend_list(id, list(set(f_list)))
 
-                await message.answer("✔️ <b>Друг успешно добален</b>.", parse_mode="html", reply_markup=keyboards.friends)
+                await message.answer("✔️ <b>Друг успешно добавлен</b>.", parse_mode="html", reply_markup=keyboards.friends)
     else:
         await message.answer(texts.incorrect_format_error_text, parse_mode="html", reply_markup=keyboards.friends)
+
+    await state.clear()
