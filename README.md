@@ -18,5 +18,5 @@ This bot will help you in the field of fitness.
 You can easily register in this Bot right now by answering a few simple questions.
 
 ## Contacts
-- **Telegram:** [whitePower1](https://t.me/whitePower1)
+- **Telegram:** [@whitePower1](https://t.me/whitePower1)
 - **VK:** [vadimDvache](https://vk.com/vadimdvache)
