@@ -56,7 +56,7 @@ async def delete_confirmation_yes(callback_query: CallbackQuery, bot: Bot):
 @router.callback_query(F.data == "NoDeleteAcc")
 async def delete_confirmation_no(callback_query: CallbackQuery, bot: Bot):
     if callback_query.data == "NoDeleteAcc":
-        await bot.edit_message_text("❌ <b>Удаление отменено</b>.", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text("❌ <b>Удаление отменено</b>.", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
 
     else:
         await bot.send_message(callback_query.from_user.id, texts.delete_error_text, parse_mode="html", reply_markup=ReplyKeyboardRemove())

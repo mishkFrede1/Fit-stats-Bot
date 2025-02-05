@@ -67,7 +67,13 @@ async def sleep_quality_graph(sender_id: int, bot: Bot, user_id: int, keyboard=T
     if df['date'].nunique(dropna=True) < 2:
         back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
         if edit_message:
-            await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+            await bot.edit_message_text(
+                "❌ <b>Недостаточно записей</b>.", 
+                chat_id=sender_id, 
+                message_id=message_id, 
+                parse_mode="html", 
+                reply_markup=back_button
+            )
         else:
             if show_back:
                 await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -81,7 +87,13 @@ async def sleep_quality_graph(sender_id: int, bot: Bot, user_id: int, keyboard=T
         if isnan(mean_sleep_hours):
             back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
             if edit_message:
-                await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+                await bot.edit_message_text(
+                    "❌ <b>Недостаточно записей</b>.", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html", 
+                    reply_markup=back_button
+                )
             else:
                 if show_back:
                     await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -152,7 +164,12 @@ async def sleep_quality_graph(sender_id: int, bot: Bot, user_id: int, keyboard=T
             plt.grid(True)
             plt.savefig(f'sleep_stats_{sender_id}.png')
             if edit_message:
-                await bot.edit_message_text(sleep_texts[texts_type]["graph_message_text"], sender_id, message_id, parse_mode="html")
+                await bot.edit_message_text(
+                    sleep_texts[texts_type]["graph_message_text"], 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html"
+                )
             else:
                 await bot.send_message(sender_id, sleep_texts[texts_type]["graph_message_text"], parse_mode="html")
 
@@ -175,7 +192,13 @@ async def calories_gained_graph(sender_id: int, bot: Bot, user_id: int, keyboard
     if df['date'].nunique(dropna=True) < 2:
         back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
         if edit_message:
-            await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+            await bot.edit_message_text(
+                "❌ <b>Недостаточно записей</b>.", 
+                chat_id=sender_id, 
+                message_id=message_id, 
+                parse_mode="html", 
+                reply_markup=back_button
+            )
         else:
             if show_back:
                 await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -196,7 +219,13 @@ async def calories_gained_graph(sender_id: int, bot: Bot, user_id: int, keyboard
         if isnan(mean_cal):
             back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
             if edit_message:
-                await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+                await bot.edit_message_text(
+                    "❌ <b>Недостаточно записей</b>.", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html", 
+                    reply_markup=back_button
+                )
             else:
                 if show_back:
                     await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -292,7 +321,12 @@ async def calories_gained_graph(sender_id: int, bot: Bot, user_id: int, keyboard
             plt.savefig(f'gained_cal_stats_{sender_id}.png')
 
             if edit_message: 
-                await bot.edit_message_text("📈 <b>График набранных калорий</b>:", sender_id, message_id, parse_mode="html")
+                await bot.edit_message_text(
+                    "📈 <b>График набранных калорий</b>:", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html"
+                )
             else:
                 await bot.send_message(sender_id, "📈 <b>График набранных калорий</b>:", parse_mode="html")
 
@@ -315,7 +349,13 @@ async def calories_burned_graph(sender_id: int, bot: Bot, user_id: int, keyboard
     if df['date'].nunique(dropna=True) < 2:
         back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
         if edit_message:
-            await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+            await bot.edit_message_text(
+                "❌ <b>Недостаточно записей</b>.", 
+                chat_id=sender_id, 
+                message_id=message_id, 
+                parse_mode="html", 
+                reply_markup=back_button
+            )
         else:
             if show_back:
                 await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -337,7 +377,13 @@ async def calories_burned_graph(sender_id: int, bot: Bot, user_id: int, keyboard
         if isnan(mean_cal):
             back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
             if edit_message:
-                await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+                await bot.edit_message_text(
+                    "❌ <b>Недостаточно записей</b>.", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html", 
+                    reply_markup=back_button
+                )
             else:
                 await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
         else:
@@ -395,7 +441,12 @@ async def calories_burned_graph(sender_id: int, bot: Bot, user_id: int, keyboard
             plt.savefig(f'burned_cal_stats_{sender_id}.png')
 
             if edit_message:
-                await bot.edit_message_text("📉 <b>График сожженных калорий</b>:", sender_id, message_id, parse_mode="html")
+                await bot.edit_message_text(
+                    "📉 <b>График сожженных калорий</b>:",
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    arse_mode="html"
+                )
             else:
                 await bot.send_message(sender_id, "📉 <b>График сожженных калорий</b>:", parse_mode="html")
 
@@ -436,7 +487,13 @@ async def measurement_graph(sender_id: int, bot: Bot, user_id: int, measure_type
     if df['date'].nunique() < 2:
         back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
         if edit_message:
-            await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+            await bot.edit_message_text(
+                "❌ <b>Недостаточно записей</b>.", 
+                chat_id=sender_id, 
+                message_id=message_id, 
+                parse_mode="html", 
+                reply_markup=back_button
+            )
         else:
             if show_back:
                 await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)
@@ -476,7 +533,12 @@ async def measurement_graph(sender_id: int, bot: Bot, user_id: int, measure_type
             plt.grid(True)
             plt.savefig(f'measure_{measure_type}_stats_{sender_id}.png')
             if edit_message:
-                await bot.edit_message_text(f"📈 <b>График {names[1]}</b>:", sender_id, message_id, parse_mode="html")
+                await bot.edit_message_text(
+                    f"📈 <b>График {names[1]}</b>:", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html"
+                )
             else:
                 await bot.send_message(sender_id, f"📈 <b>График {names[1]}</b>:", parse_mode="html")
             if keyboard:
@@ -490,7 +552,13 @@ async def measurement_graph(sender_id: int, bot: Bot, user_id: int, measure_type
         else:
             back_button = InlineKeyboardMarkup(inline_keyboard=[[InlineKeyboardButton(text="Назад ⬅️", callback_data=f"friend_back_{user_id}")]])
             if edit_message:
-                await bot.edit_message_text("❌ <b>Недостаточно записей</b>.", sender_id, message_id, parse_mode="html", reply_markup=back_button)
+                await bot.edit_message_text(
+                    "❌ <b>Недостаточно записей</b>.", 
+                    chat_id=sender_id, 
+                    message_id=message_id, 
+                    parse_mode="html", 
+                    reply_markup=back_button
+                )
             else:
                 if show_back:
                     await bot.send_message(sender_id, "❌ <b>Недостаточно записей</b>.", parse_mode="html", reply_markup=back_button)

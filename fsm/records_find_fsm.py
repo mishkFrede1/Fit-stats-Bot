@@ -47,14 +47,14 @@ async def records_find_get_type(callback_query: CallbackQuery, bot: Bot, state: 
     await state.update_data(type=find_type)
     await state.set_state(date_find.date)
     if find_type == "date":
-        await bot.edit_message_text(f"🔍 <b>Введите дату записи через точку</b>: 12.7.2024 ...", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите дату записи через точку</b>: 12.7.2024 ...", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
     elif find_type == "day":
-        await bot.edit_message_text(f"🔍 <b>Введите день</b>:", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите день</b>:", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
     elif find_type == "month":
         await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
         await bot.send_message(callback_query.from_user.id, f"🔍 <b>Выберите месяц</b>:", parse_mode="html", reply_markup=keyboards.months)
     else:
-        await bot.edit_message_text(f"🔍 <b>Введите год</b>:", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите год</b>:", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
 
 @router.message(date_find.date)
 async def records_find_send_type(message: Message, state: FSMContext, bot: Bot):
@@ -154,14 +154,14 @@ async def friend_records_find_get_type(callback_query: CallbackQuery, bot: Bot, 
 
     await state.set_state(friend_date_find.date)
     if find_type == "date":
-        await bot.edit_message_text(f"🔍 <b>Введите дату записи через точку</b>: 12.7.2024 ...", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите дату записи через точку</b>: 12.7.2024 ...", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
     elif find_type == "day":
-        await bot.edit_message_text(f"🔍 <b>Введите день</b>:", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите день</b>:", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
     elif find_type == "month":
         await bot.delete_message(callback_query.from_user.id, callback_query.message.message_id)
         await bot.send_message(callback_query.from_user.id, f"🔍 <b>Выберите месяц</b>:", parse_mode="html", reply_markup=keyboards.months)
     else:
-        await bot.edit_message_text(f"🔍 <b>Введите год</b>:", callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+        await bot.edit_message_text(f"🔍 <b>Введите год</b>:", chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
 
 @router.message(friend_date_find.date)
 async def friend_records_find_send_type(message: Message, state: FSMContext, bot: Bot):

@@ -36,7 +36,7 @@ async def get_measurement(callback_query: CallbackQuery, bot: Bot, state: FSMCon
     else:
         text = "⚙️ <b>Введите ваши измерения в сантиметрах</b>."
 
-    await bot.edit_message_text(text, callback_query.from_user.id, callback_query.message.message_id, parse_mode="html")
+    await bot.edit_message_text(text, chat_id=callback_query.from_user.id, message_id=callback_query.message.message_id, parse_mode="html")
 
 @router.message(measurements.measurement)
 async def send_measurement(message: Message, state: FSMContext, bot: Bot):

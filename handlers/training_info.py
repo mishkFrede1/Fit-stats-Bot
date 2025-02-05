@@ -38,7 +38,13 @@ async def training_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(texts.training_info_text.format(t_time=t_time, t_type=t_type, t_days=t_days), user_id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        texts.training_info_text.format(t_time=t_time, t_type=t_type, t_days=t_days), 
+        chat_id=user_id, 
+        message_id=callback_query.message.message_id, 
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 
 @router.callback_query(F.data == 'backto_sched')
@@ -47,8 +53,8 @@ async def training_info(callback_query: CallbackQuery, bot: Bot):
 
     await bot.edit_message_text(
         "📑 <b>Ваши тренировки</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=keyboard
     )

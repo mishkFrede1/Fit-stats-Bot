@@ -53,7 +53,7 @@ async def send_privacy_text(user_id: int, sender, is_message=True, message_id=No
         await sender.answer("🔒 <b>Кто может просматривать</b>:", parse_mode="html", reply_markup=keyboard)
 
     else:
-        await sender.edit_message_text("🔒 <b>Кто может просматривать</b>:", user_id, message_id, parse_mode="html", reply_markup=keyboard)
+        await sender.edit_message_text("🔒 <b>Кто может просматривать</b>:", chat_id=user_id, message_id=message_id, parse_mode="html", reply_markup=keyboard)
 
 @router.message(F.text == "Настройки приватности 🔐")
 async def privacy_settings(message: Message):
@@ -148,8 +148,8 @@ async def friends_info(callback_query: CallbackQuery, bot: Bot):
                 height=friend[6],
                 goal=friend[8]
             ), 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=keyboard
         )
@@ -160,8 +160,8 @@ async def friends_info_back(callback_query: CallbackQuery, bot: Bot):
 
     await bot.edit_message_text(
         "📑 <b>Список друзей</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=get_friends_keyboard(friends)
     )
@@ -179,8 +179,8 @@ async def friends_stats_type_select(callback_query: CallbackQuery, bot: Bot):
     )
     await bot.edit_message_text(
         "⚙️ <b>Выберите тип графика</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=stats
     )
@@ -200,8 +200,8 @@ async def friends_stats_calories_types(callback_query: CallbackQuery, bot: Bot):
     )
     await bot.edit_message_text(
         "⚙️ <b>Выберите тип графика</b>:", 
-        callback_query.from_user.id,
-        callback_query.message.message_id,
+        chat_id=callback_query.from_user.id,
+        message_id=callback_query.message.message_id,
         parse_mode="html", 
         reply_markup=keyboard
     )
@@ -229,8 +229,8 @@ async def friends_stats_measurements_types(callback_query: CallbackQuery, bot: B
     )
     await bot.edit_message_text(
         "⚙️ <b>Выберите тип графика</b>:", 
-        callback_query.from_user.id,
-        callback_query.message.message_id,
+        chat_id=callback_query.from_user.id,
+        message_id=callback_query.message.message_id,
         parse_mode="html", 
         reply_markup=keyboard
     )
@@ -258,8 +258,8 @@ async def friend_delete(callback_query: CallbackQuery, bot: Bot):
         friends = None
         await bot.edit_message_text(
             "✔️ <b>Успешное удаление</b>", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html"
         )
         manager.upload_friend_list(callback_query.from_user.id, friends)
@@ -269,8 +269,8 @@ async def friend_delete(callback_query: CallbackQuery, bot: Bot):
         await bot.send_message(callback_query.from_user.id, "✔️ <b>Успешное удаление</b>", parse_mode="html")
         await bot.edit_message_text(
             "📑 <b>Список друзей</b>:", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=get_friends_keyboard(friends)
         )
@@ -287,8 +287,8 @@ async def friend_trainings_list(callback_query: CallbackQuery, bot: Bot):
 
     await bot.edit_message_text(
         "📑 <b>Тренировки</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=InlineKeyboardMarkup(inline_keyboard=inline_keyboard)
     )
@@ -322,7 +322,13 @@ async def friend_training_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(texts.training_info_text.format(t_time=t_time, t_type=t_type, t_days=t_days), callback_query.from_user.id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        texts.training_info_text.format(t_time=t_time, t_type=t_type, t_days=t_days), 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 async def send_exercise_text(user_id: int, message_id: int, id: int, exercises: list, keyboard: InlineKeyboardMarkup, bot: Bot):
     name=exercises[id][0]
@@ -340,8 +346,8 @@ async def send_exercise_text(user_id: int, message_id: int, id: int, exercises: 
 
     await bot.edit_message_text(
         text, 
-        user_id, 
-        message_id,
+        chat_id=user_id, 
+        message_id=message_id,
         parse_mode="html",
         reply_markup=keyboard
     )
@@ -454,7 +460,13 @@ async def friend_records_list(callback_query: CallbackQuery, bot: Bot):
             back_button_data="friend_info",
             id_in_back_button_data=f"{friend_id}" 
         )
-    await bot.edit_message_text("📑 <b>Выберите запись</b>:", callback_query.from_user.id, callback_query.message.message_id, reply_markup=keyboard, parse_mode="html")
+    await bot.edit_message_text(
+        "📑 <b>Выберите запись</b>:", 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
+        reply_markup=keyboard, 
+        parse_mode="html"
+    )
 
 
 
@@ -547,7 +559,13 @@ async def friend_record_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(text, callback_query.from_user.id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        text, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 @router.callback_query(F.data.startswith('friend_record_show_ex_'))
 async def records_exercises_info(callback_query: CallbackQuery, bot: Bot):
@@ -674,8 +692,8 @@ async def friend_records_list_show_right_left(callback_query: CallbackQuery, bot
 
         await bot.edit_message_text(
             "📑 <b>Выберите запись</b>:", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=keyboard
         )
@@ -691,7 +709,13 @@ async def friend_records_list_finder(callback_query: CallbackQuery, bot: Bot):
         ]
     )
 
-    await bot.edit_message_text("🔍 <b>Выберите тип поиска: </b>", callback_query.from_user.id, callback_query.message.message_id, reply_markup=keyboard, parse_mode="html")
+    await bot.edit_message_text(
+        "🔍 <b>Выберите тип поиска: </b>", 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
+        reply_markup=keyboard, 
+        parse_mode="html"
+    )
 
 
 
@@ -775,7 +799,13 @@ async def friend_filtered_records_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(text, user_id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        text, 
+        chat_id=user_id, 
+        message_id=callback_query.message.message_id,
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 # Возвращение к списку записей в поиске 
 @router.callback_query(F.data.startswith('backto_friend_filtered_records_'))
@@ -811,8 +841,8 @@ async def friend_filtered_records_info_back(callback_query: CallbackQuery, bot: 
 
     await bot.edit_message_text(
         f"📑 <b>Найдено {length} {ending}</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=keyboard
     )
@@ -858,8 +888,8 @@ async def friend_filtered_records_list_show_right_left(callback_query: CallbackQ
         ending = getRecordCountEnding(list_length)
         await bot.edit_message_text(
             f"📑 <b>Найдено {list_length} {ending}</b>:", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=keyboard
         )

@@ -116,7 +116,13 @@ async def records_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(text, user_id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        text, 
+        chat_id=user_id, 
+        message_id=callback_query.message.message_id, 
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 # Кнопка для возвращения обратно к списку записей
 @router.callback_query(F.data == 'backto_records')
@@ -129,8 +135,8 @@ async def records_info_back(callback_query: CallbackQuery, bot: Bot):
 
     await bot.edit_message_text(
         "📑 <b>Выберите запись</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=keyboard
     )
@@ -172,8 +178,8 @@ async def send_exercise_text(user_id: int, message_id: int, id: int, exercises: 
 
     await bot.edit_message_text(
         text, 
-        user_id, 
-        message_id,
+        chat_id=user_id, 
+        message_id=message_id,
         parse_mode="html",
         reply_markup=keyboard
     )
@@ -274,8 +280,8 @@ async def records_list_show_right_left(callback_query: CallbackQuery, bot: Bot):
 
         await bot.edit_message_text(
             "📑 <b>Выберите запись</b>:", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=keyboard
         )
@@ -283,7 +289,13 @@ async def records_list_show_right_left(callback_query: CallbackQuery, bot: Bot):
 # Поиск записей по дате
 @router.callback_query(F.data == 'records_find_list')
 async def records_list_show_right_left(callback_query: CallbackQuery, bot: Bot):
-    await bot.edit_message_text("🔍 <b>Выберите тип поиска: </b>", callback_query.from_user.id, callback_query.message.message_id, reply_markup=keyboards.record_find_types, parse_mode="html")
+    await bot.edit_message_text(
+        "🔍 <b>Выберите тип поиска: </b>", 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
+        reply_markup=keyboards.record_find_types, 
+        parse_mode="html"
+    )
 
 
 
@@ -366,7 +378,13 @@ async def filtered_records_info(callback_query: CallbackQuery, bot: Bot):
         inline_keyboard=inline_keyboard
     )
 
-    await bot.edit_message_text(text, user_id, callback_query.message.message_id, parse_mode="html", reply_markup=keyboard)
+    await bot.edit_message_text(
+        text, 
+        chat_id=user_id, 
+        message_id=callback_query.message.message_id, 
+        parse_mode="html", 
+        reply_markup=keyboard
+    )
 
 # Возвращение к списку записей в поиске 
 @router.callback_query(F.data == 'backto_filtered_records')
@@ -382,8 +400,8 @@ async def filtered_records_info_back(callback_query: CallbackQuery, bot: Bot):
 
     await bot.edit_message_text(
         f"📑 <b>Найдено {length} {ending}</b>:", 
-        callback_query.from_user.id, 
-        callback_query.message.message_id, 
+        chat_id=callback_query.from_user.id, 
+        message_id=callback_query.message.message_id, 
         parse_mode="html", 
         reply_markup=keyboard
     )
@@ -418,8 +436,8 @@ async def filtered_records_list_show_right_left(callback_query: CallbackQuery, b
         ending = getRecordCountEnding(list_length)
         await bot.edit_message_text(
             f"📑 <b>Найдено {list_length} {ending}</b>:", 
-            callback_query.from_user.id, 
-            callback_query.message.message_id, 
+            chat_id=callback_query.from_user.id, 
+            message_id=callback_query.message.message_id, 
             parse_mode="html", 
             reply_markup=keyboard
         )

@@ -24,8 +24,8 @@ async def send_exercise_text(user_id: int, message_id: int, id: int, exercises: 
 
     await bot.edit_message_text(
         text, 
-        user_id, 
-        message_id,
+        chat_id=user_id, 
+        message_id=message_id,
         parse_mode="html",
         reply_markup=keyboard
     )
