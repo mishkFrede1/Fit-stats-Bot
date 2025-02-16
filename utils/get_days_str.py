@@ -1,4 +1,4 @@
-def get_days_str(days: list[str]) -> str:
+def get_days_str(days: list) -> str:
     result = ""
     reduced_days = {
         "monday":"mon",

@@ -3,7 +3,7 @@ from aiogram.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 manager = Manager()
 
-def get_friends_keyboard(friends_list: list[int]) -> InlineKeyboardMarkup:
+def get_friends_keyboard(friends_list: list) -> InlineKeyboardMarkup:
     inline_keyboard = []
     for i in friends_list:
         friend = manager.get_user_data(i)

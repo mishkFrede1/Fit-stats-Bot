@@ -180,7 +180,7 @@ class Manager():
             cursor.close()
             self.release_db_connection(conn)
 
-    def upload_exercise(self, exercise: list[str], user_id: int):
+    def upload_exercise(self, exercise: list, user_id: int):
         """
         Upload new exercise in DB.
 
@@ -210,10 +210,10 @@ class Manager():
             user_id: int, 
             first_name: str, 
             username: str, 
-            days: list[str], 
+            days: list, 
             training_time: time, 
             training_type: str, 
-            exercises: list[str],
+            exercises: list,
             training_name: str):
         """
         Upload new training in DB.
@@ -263,13 +263,13 @@ class Manager():
             username: str, 
             date: date, 
             training_type: str, 
-            exercises: list[list[str]],
+            exercises: list,
             time_spent: int,
             state_of_health: str,
             note: str,
             burned_cal: int,
             gained_cal: int,
-            measurements: list[list[str]],
+            measurements: list,
             sleep: int
         ):
         """
@@ -308,7 +308,7 @@ class Manager():
             cursor.close()
             self.release_db_connection(conn)
 
-    def upload_friend_list(self, user_id: int, friends: list[int]):
+    def upload_friend_list(self, user_id: int, friends: list):
         """
         Upload new user friend in DB.
 

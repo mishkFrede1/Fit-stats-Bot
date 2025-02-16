@@ -16,7 +16,7 @@ rus_day_ids = {
     6: "Суббота",
     7: "Воскресенье"      
 }
-def sort_week_days(days: list[str]):
+def sort_week_days(days: list):
     int_days = []
     for day in days:
         int_days.append(day_ids[day])
